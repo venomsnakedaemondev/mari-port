@@ -1,0 +1,100 @@
+@import url("https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&display=swap");
+@import "tailwindcss";
+
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+  body {
+    @apply bg-black text-gray-100 antialiased;
+    font-feature-settings: "kern" 1, "liga" 1, "calt" 1;
+  }
+}
+
+@layer utilities {
+  @keyframes fadeIn {
+    from {
+      opacity: 0;
+      transform: translateY(10px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  .animate-fade-in {
+    animation: fadeIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  }
+
+  @keyframes blink {
+    0%,
+    100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0;
+    }
+  }
+  .animate-blink {
+    animation: blink 1s step-end infinite;
+  }
+
+  @keyframes loading {
+    0% {
+      transform: translateX(-100%);
+    }
+    100% {
+      transform: translateX(250%);
+    }
+  }
+  .animate-loading-bar {
+    animation: loading 1.5s cubic-bezier(0.65, 0, 0.35, 1) infinite;
+  }
+
+  .foto-maria {
+    @apply grayscale-[80%] contrast-110 brightness-110;
+    filter: sepia(10%) saturate(120%);
+    transition: filter 0.5s ease;
+  }
+  .foto-maria:hover,
+  .foto-maria:focus-visible {
+    @apply grayscale-0 contrast-100 brightness-100;
+    filter: sepia(0%) saturate(100%);
+    /* Añade un efecto visual extra en hover/focus */
+    box-shadow: 0 8px 32px 0 rgba(236, 72, 153, 0.18), 0 1.5px 8px 0 rgba(139, 92, 246, 0.12);
+    transform: scale(1.03) rotate(-1deg);
+    transition: filter 0.5s, box-shadow 0.3s, transform 0.3s;
+  }
+
+  @supports (scrollbar-gutter: stable) {
+    html {
+      scrollbar-gutter: stable;
+    }
+  }
+  ::-webkit-scrollbar {
+    @apply w-2;
+  }
+  ::-webkit-scrollbar-track {
+    @apply bg-gray-900;
+  }
+  ::-webkit-scrollbar-thumb {
+    @apply bg-pink-500/50 rounded-full hover:bg-pink-500/70;
+  }
+
+  .reveal-up {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+  }
+
+  .reveal-up.show {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+a,
+button,
+.transition-all {
+  @apply transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)];
+}

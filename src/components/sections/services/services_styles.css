@@ -1,0 +1,61 @@
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&display=swap");
+
+.pacifico {
+  font-family: "Pacifico", cursive;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+/* Animaciones mejoradas */
+@keyframes fadeInUp {
+  0% {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fadeInUp 0.8s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+}
+
+/* Estilos para el Swiper */
+.swiper-button-next,
+.swiper-button-prev {
+  color: #f472b6 !important;
+  width: 40px !important;
+  height: 40px !important;
+  background: rgba(244, 114, 182, 0.1);
+  border-radius: 50%;
+  backdrop-filter: blur(4px);
+  transition: all 0.3s ease;
+}
+
+.swiper-button-next:hover,
+.swiper-button-prev:hover {
+  background: rgba(244, 114, 182, 0.2);
+}
+
+.swiper-pagination-bullet {
+  width: 10px !important;
+  height: 10px !important;
+  opacity: 0.5 !important;
+  transition: all 0.3s ease !important;
+}
+
+.swiper-pagination-bullet-active {
+  opacity: 1 !important;
+  transform: scale(1.2) !important;
+}
+
+/* Efectos de hover para las tarjetas */
+.service-card-hover-effect {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card-hover-effect:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(244, 114, 182, 0.15);
+}

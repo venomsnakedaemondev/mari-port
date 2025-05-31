@@ -1,0 +1,296 @@
+@import url("https://fonts.googleapis.com/css2?family=Pacifico&family=Montserrat:wght@300;400;500;600&display=swap");
+
+/* === Animaciones base === */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes float {
+  0%,
+  100% {
+    transform: translateY(0) rotate(0.5deg);
+  }
+  50% {
+    transform: translateY(-12px) rotate(-0.5deg);
+  }
+}
+
+@keyframes breath {
+  0%,
+  100% {
+    transform: scale(1);
+    text-shadow: 0 2px 4px rgba(236, 72, 153, 0.3);
+  }
+  50% {
+    transform: scale(1.03);
+    text-shadow: 0 4px 8px rgba(236, 72, 153, 0.4);
+  }
+}
+
+@keyframes blink {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0;
+  }
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+}
+
+@keyframes mobileBounceIn {
+  0% {
+    opacity: 0;
+    transform: scale(0.7) translateY(60px);
+  }
+  60% {
+    opacity: 1;
+    transform: scale(1.05) translateY(-10px);
+  }
+  80% {
+    transform: scale(0.98) translateY(2px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes gradient-flow {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* === Nuevas animaciones para el fondo === */
+@keyframes draw {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+
+@keyframes float-up {
+  0% {
+    transform: translateY(100vh) scale(0.5);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.6;
+  }
+  90% {
+    opacity: 0.6;
+  }
+  100% {
+    transform: translateY(-100px) scale(1.2);
+    opacity: 0;
+  }
+}
+
+/* === Clases de animación === */
+.animate-visible {
+  animation: fadeIn 0.8s cubic-bezier(0.22, 0.61, 0.36, 1) forwards;
+}
+
+.animate-slide-up {
+  animation: slideUp 0.7s cubic-bezier(0.22, 1, 0.36, 1) forwards;
+}
+
+.animate-gradient-flow {
+  background-size: 200% 200%;
+  animation: gradient-flow 6s ease infinite;
+}
+
+/* === Efectos especiales === */
+.glow-effect {
+  position: relative;
+  z-index: 10;
+}
+
+.glow-effect::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(236, 72, 153, 0.3) 0%,
+    rgba(139, 92, 246, 0.2) 50%,
+    transparent 100%
+  );
+  animation: gradient-flow 6s ease infinite;
+  border-radius: 50%;
+}
+
+.glow-effect:hover::before {
+  background: radial-gradient(
+    circle at 50% 50%,
+    rgba(236, 72, 153, 0.4) 0%,
+    rgba(139, 92, 246, 0.3) 50%,
+    transparent 100%
+  );
+  transition: background 0.5s ease;
+}
+
+.glow-effect:hover::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(
+    circle at 70% 30%,
+    rgba(255, 255, 255, 0.15) 0%,
+    transparent 70%
+  );
+  z-index: 5;
+}
+
+.highlight {
+  color: #f9a8d4;
+  transition: color 0.3s ease, transform 0.2s ease;
+  font-weight: 400;
+}
+
+.highlight:hover {
+  color: #f472b6;
+  transform: translateY(-1px);
+}
+
+/* === Tipografía === */
+.pacifico {
+  font-family: "Pacifico", cursive;
+  letter-spacing: 1px;
+}
+
+body {
+  font-family: "Montserrat", sans-serif;
+}
+
+/* === Fondo animado === */
+.animated-background {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.sales-graph {
+  position: absolute;
+  bottom: 10%;
+  right: 5%;
+  width: 30%;
+  max-width: 400px;
+  opacity: 0.7;
+  transition: opacity 0.5s ease;
+}
+
+.sales-graph:hover {
+  opacity: 0.9;
+}
+
+.graph-line {
+  stroke-dasharray: 1000;
+  stroke-dashoffset: 1000;
+  animation: draw 8s ease-in-out infinite alternate;
+}
+
+.graph-circle {
+  opacity: 0;
+  animation: fadeIn 1s ease-in-out forwards;
+}
+
+.particles {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.particle {
+  position: absolute;
+  background: rgba(236, 72, 153, 0.4);
+  border-radius: 50%;
+  animation: float-up 15s linear infinite;
+  pointer-events: none;
+}
+
+/* === Responsive adjustments === */
+@media (max-width: 1024px) {
+  .sales-graph {
+    width: 35%;
+    opacity: 0.6;
+  }
+}
+
+@media (max-width: 768px) {
+  .sales-graph {
+    width: 45%;
+    bottom: 5%;
+    right: 3%;
+  }
+}
+
+@media (max-width: 640px) {
+  .pacifico {
+    font-size: 2.5rem;
+  }
+
+  .float-animation {
+    animation: float 5s ease-in-out infinite;
+  }
+
+  .sales-graph {
+    width: 60%;
+    opacity: 0.5;
+  }
+}
+
+@media (max-width: 400px) {
+  .pacifico {
+    font-size: 2.25rem;
+  }
+
+  .sales-graph {
+    width: 70%;
+  }
+}
+
+.mobile-float {
+  animation: none !important;
+}
